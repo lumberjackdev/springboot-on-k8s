@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spring-boot-app
+spec:
+  containers:
+    - name: spring-boot-app
+      image: docker.io/library/springbooktk8s:0.0.1-SNAPSHOT
+      ports:
+        - containerPort: 8080
+          hostPort: 8080
+
