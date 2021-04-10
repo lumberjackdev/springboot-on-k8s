@@ -1,12 +1,17 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: spring-boot-app
+  creationTimestamp: null
+  labels:
+    run: demo
+  name: demo
 spec:
   containers:
-    - name: spring-boot-app
-      image: docker.io/library/springbooktk8s:0.0.1-SNAPSHOT
+    - image: docker.io/library/springbooktk8s:0.0.1-SNAPSHOT
+      name: demo
       ports:
         - containerPort: 8080
-          hostPort: 8080
-
+      resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
