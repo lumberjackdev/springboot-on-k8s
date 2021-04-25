@@ -1,19 +1,28 @@
 package com.lumberjackdev.springbooktk8s;
 
-import lombok.Data;
+import lombok.Getter;
 import org.springframework.boot.actuate.health.Health;
-import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.boot.actuate.health.ReactiveHealthIndicator;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 
-@Data
 @Component
-public class ConfigurableHealthContributor implements HealthIndicator {
+public class ConfigurableHealthContributor implements ReactiveHealthIndicator {
 
-    private Health health = Health.up().build();
+    @Getter
+    private boolean healthy;
 
     @Override
-    public Health health() {
-        return health;
+    public Mono<Health> health() {
+        return healthy ? Mono.just(Health.up().build()) : Mono.just(Health.down().build());
+    }
+
+    public void setUnhealthy() {
+        healthy = false;
+    }
+
+    public void setHealthy() {
+        healthy = true;
     }
 }
