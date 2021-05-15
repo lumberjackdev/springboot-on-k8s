@@ -1,6 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"kind":"Deployment","apiVersion":"apps/v1","metadata":{"name":"springboot-demo","creationTimestamp":null,"labels":{"app":"springboot-demo"}},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"springboot-demo"}},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"springboot-demo"}},"spec":{"containers":[{"name":"springbooktk8s","image":"docker.io/library/springbooktk8s:0.0.1-SNAPSHOT","resources":{}}]}},"strategy":{}},"status":{}}
   creationTimestamp: null
   labels:
     app: springboot-demo

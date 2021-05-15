@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: springboot-demo
   name: springboot-demo
@@ -13,12 +12,12 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: springboot-demo
     spec:
       containers:
         - image: docker.io/library/springbooktk8s:0.0.1-SNAPSHOT
           name: springbooktk8s
+          ports:
+            - containerPort: 8080
           resources: {}
-status: {}
